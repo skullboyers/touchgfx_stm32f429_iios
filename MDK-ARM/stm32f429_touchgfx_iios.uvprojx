@@ -311,7 +311,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>0</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;                     ../Src;                     ../Drivers/STM32F4xx_HAL_Driver/Inc;                     ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;                     ../Middlewares/Third_Party/FreeRTOS/Source/include;                     ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;                     ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;                     ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;                     ../Drivers/CMSIS/Include;                     ../middlewares/st/touchgfx/framework/include;                     ../src/generated/fonts/include;                     ../src/generated/gui_generated/include;                     ../src/generated/images/include;                     ../src/generated/texts/include;                     ../src/gui/include</IncludePath>
+              <IncludePath>../Inc;            ../Src;            ../Drivers/STM32F4xx_HAL_Driver/Inc;            ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;            ../Middlewares/Third_Party/FreeRTOS/Source/include;            ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;            ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;            ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;            ../Drivers/CMSIS/Include;            ../Drivers/BSP;            ../Device;../middlewares/st/touchgfx/framework/include;../src/generated/fonts/include;../src/generated/gui_generated/include;../src/generated/images/include;../src/generated/texts/include;../src/gui/include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -589,6 +589,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Drivers/BSP</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_i2c_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\i2c\bsp_i2c_gpio.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Middlewares/FreeRTOS</GroupName>
           <Files>
             <File>
@@ -644,7 +654,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>gui</GroupName>
+          <GroupName>TouchGFX/Gui</GroupName>
           <Files>
             <File>
               <FileName>FrontendApplication.cpp</FileName>
@@ -669,7 +679,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>generated</GroupName>
+          <GroupName>TouchGFX/Generated</GroupName>
           <Files>
             <File>
               <FileName>ApplicationFontProvider.cpp</FileName>
@@ -769,12 +779,197 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Lib</GroupName>
+          <GroupName>TouchGFX/Lib</GroupName>
           <Files>
             <File>
               <FileName>touchgfx_core.lib</FileName>
               <FileType>4</FileType>
               <FilePath>../middlewares/st/touchgfx/lib/core/cortex_m4f/Keil/touchgfx_core.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Device</GroupName>
+          <Files>
+            <File>
+              <FileName>touch_ft5x06.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Device\touch_ft5x06.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gui</GroupName>
+          <Files>
+            <File>
+              <FileName>FrontendApplication.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/gui/src/common/frontendapplication.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Model.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/gui/src/model/model.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen1Presenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/gui/src/screen1_screen/screen1presenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen1View.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/gui/src/screen1_screen/screen1view.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen2Presenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/gui/src/screen2_screen/screen2presenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen2View.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/gui/src/screen2_screen/screen2view.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>generated</GroupName>
+          <Files>
+            <File>
+              <FileName>ApplicationFontProvider.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/applicationfontprovider.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>BitmapDatabase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/images/src/bitmapdatabase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Buttons_Round_icon_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/images/src/__designer/blue_buttons_round_icon_button.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Buttons_Round_icon_button_pressed.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/images/src/__designer/blue_buttons_round_icon_button_pressed.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Clocks_Backgrounds_clock_standard_background.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/images/src/__designer/blue_clocks_backgrounds_clock_standard_background.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Clocks_Hands_clock_standard_hour_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/images/src/__designer/blue_clocks_hands_clock_standard_hour_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Clocks_Hands_clock_standard_minute_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/images/src/__designer/blue_clocks_hands_clock_standard_minute_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Clocks_Hands_clock_standard_second_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/images/src/__designer/blue_clocks_hands_clock_standard_second_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CachedFont.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/cachedfont.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Dark_Buttons_Round_icon_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/images/src/__designer/dark_buttons_round_icon_button.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_verdana_10_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/font_verdana_10_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_verdana_20_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/font_verdana_20_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_verdana_40_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/font_verdana_40_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FontCache.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/fontcache.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FrontendApplicationBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/gui_generated/src/common/frontendapplicationbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>GeneratedFont.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/generatedfont.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_verdana_10_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/kerning_verdana_10_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_verdana_20_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/kerning_verdana_20_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_verdana_40_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/kerning_verdana_40_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LanguageGb.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/texts/src/languagegb.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen1ViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/gui_generated/src/screen1_screen/screen1viewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen2ViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/gui_generated/src/screen2_screen/screen2viewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_verdana_10_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/table_verdana_10_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_verdana_20_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/table_verdana_20_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_verdana_40_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/fonts/src/table_verdana_40_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Texts.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/texts/src/texts.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TypedTextDatabase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/texts/src/typedtextdatabase.cpp</FilePath>
             </File>
           </Files>
         </Group>
