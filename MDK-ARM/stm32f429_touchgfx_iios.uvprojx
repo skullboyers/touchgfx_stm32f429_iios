@@ -1,23 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_projx.xsd">
-
   <SchemaVersion>2.1</SchemaVersion>
-
   <Header>### uVision Project, (C) Keil Software</Header>
-
   <Targets>
     <Target>
       <TargetName>stm32f429_touchgfx_iios</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::.\ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F429IGTx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.12.0</PackID>
-          <PackURL>http://www.keil.com/pack</PackURL>
+          <PackID>Keil.STM32F4xx_DFP.2.14.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000-0x2002FFFF) IRAM2(0x10000000-0x1000FFFF) IROM(0x8000000-0x80FFFFF)  CLOCK(25000000) FPU2 CPUTYPE("Cortex-M4")</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -48,14 +45,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>stm32f429_touchgfx_iios\</OutputDirectory>
+          <OutputDirectory>.\stm32f429_touchgfx_iios\Obj\</OutputDirectory>
           <OutputName>stm32f429_touchgfx_iios</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath></ListingPath>
+          <ListingPath>.\stm32f429_touchgfx_iios\List\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -184,6 +181,8 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>2</RvdsVP>
+            <RvdsMve>0</RvdsMve>
+            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -258,8 +257,8 @@
               </XRAM>
               <OCR_RVCT1>
                 <Type>1</Type>
-                <StartAddress>0x0</StartAddress>
-                <Size>0x0</Size>
+                <StartAddress>0x90000000</StartAddress>
+                <Size>0x1000</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
                 <Type>1</Type>
@@ -314,7 +313,7 @@
             <Optim>0</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
-            <OneElfS>1</OneElfS>
+            <OneElfS>0</OneElfS>
             <Strict>0</Strict>
             <EnumInt>0</EnumInt>
             <PlainCh>0</PlainCh>
@@ -335,9 +334,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F429xx</Define>
+              <Define>USE_HAL_DRIVER,STM32F429xx,TARGET</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;            ../Src;            ../Drivers/STM32F4xx_HAL_Driver/Inc;            ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;            ../Middlewares/Third_Party/FreeRTOS/Source/include;            ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;            ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;            ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;            ../Drivers/CMSIS/Include;            ../Drivers/BSP;            ../Device;../middlewares/st/touchgfx/framework/include;../src/generated/fonts/include;../src/generated/gui_generated/include;../src/generated/images/include;../src/generated/texts/include;../src/gui/include</IncludePath>
+              <IncludePath>../Inc;../Src;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../Drivers/BSP;../Device;../middlewares/st/touchgfx/framework/include;../src/generated/fonts/include;../src/generated/gui_generated/include;../src/generated/images/include;../src/generated/texts/include;../src/gui/include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -350,7 +349,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
+            <ClangAsOpt>4</ClangAsOpt>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -359,7 +358,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -368,7 +367,7 @@
             <TextAddressRange>0x08000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile></ScatterFile>
+            <ScatterFile>.\stm32f429_touchgfx_iios.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -599,6 +598,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Device</GroupName>
+          <Files>
+            <File>
+              <FileName>touch_ft5x06.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Device\touch\touch_ft5x06.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_spi_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Device\flash\bsp_spi_flash.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Middlewares/FreeRTOS</GroupName>
           <Files>
             <File>
@@ -655,6 +669,75 @@
         </Group>
         <Group>
           <GroupName>TouchGFX/Gui</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <uGnu>2</uGnu>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <ClangAsOpt>0</ClangAsOpt>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
           <Files>
             <File>
               <FileName>FrontendApplication.cpp</FileName>
@@ -676,10 +759,89 @@
               <FileType>8</FileType>
               <FilePath>../src/gui/src/screen1_screen/screen1view.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Screen2Presenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\gui\src\screen2_screen\Screen2Presenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen2View.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\gui\src\screen2_screen\Screen2View.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>TouchGFX/Generated</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>0</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>1</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <uGnu>2</uGnu>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <ClangAsOpt>0</ClangAsOpt>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
           <Files>
             <File>
               <FileName>ApplicationFontProvider.cpp</FileName>
@@ -752,6 +914,11 @@
               <FilePath>../src/generated/gui_generated/src/screen1_screen/screen1viewbase.cpp</FilePath>
             </File>
             <File>
+              <FileName>Screen2ViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\generated\gui_generated\src\screen2_screen\Screen2ViewBase.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Table_verdana_10_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../src/generated/fonts/src/table_verdana_10_4bpp.cpp</FilePath>
@@ -776,6 +943,41 @@
               <FileType>8</FileType>
               <FilePath>../src/generated/texts/src/typedtextdatabase.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Blue_Buttons_Round_icon_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\generated\images\src\__designer\Blue_Buttons_Round_icon_button.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Buttons_Round_icon_button_pressed.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\generated\images\src\__designer\Blue_Buttons_Round_icon_button_pressed.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Clocks_Backgrounds_clock_standard_background.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\generated\images\src\__designer\Blue_Clocks_Backgrounds_clock_standard_background.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Clocks_Hands_clock_standard_hour_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\generated\images\src\__designer\Blue_Clocks_Hands_clock_standard_hour_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Clocks_Hands_clock_standard_minute_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\generated\images\src\__designer\Blue_Clocks_Hands_clock_standard_minute_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Clocks_Hands_clock_standard_second_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\generated\images\src\__designer\Blue_Clocks_Hands_clock_standard_second_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Dark_Buttons_Round_icon_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\generated\images\src\__designer\Dark_Buttons_Round_icon_button.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -789,18 +991,13 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Device</GroupName>
-          <Files>
-            <File>
-              <FileName>touch_ft5x06.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Device\touch_ft5x06.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>gui</GroupName>
           <Files>
+            <File>
+              <FileName>CustomContainer1.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/gui/src/containers/customcontainer1.cpp</FilePath>
+            </File>
             <File>
               <FileName>FrontendApplication.cpp</FileName>
               <FileType>8</FileType>
@@ -880,6 +1077,11 @@
               <FileName>CachedFont.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../src/generated/fonts/src/cachedfont.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CustomContainer1Base.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/generated/gui_generated/src/containers/customcontainer1base.cpp</FilePath>
             </File>
             <File>
               <FileName>Dark_Buttons_Round_icon_button.cpp</FileName>
@@ -979,18 +1181,30 @@
       </Groups>
     </Target>
   </Targets>
-
   <RTE>
-    <apis/>
+    <apis></apis>
     <components>
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="4.3.0" condition="CMSIS Core">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="4.5.0"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="4.5.0"></package>
         <targetInfos>
-          <targetInfo name="stm32f429_touchgfx_iios"/>
+          <targetInfo name="stm32f429_touchgfx_iios"></targetInfo>
         </targetInfos>
       </component>
     </components>
-    <files/>
+    <files></files>
   </RTE>
-
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>&lt;Project Info&gt;</LayName>
+        <LayDesc></LayDesc>
+        <LayUrl></LayUrl>
+        <LayKeys></LayKeys>
+        <LayCat></LayCat>
+        <LayLic></LayLic>
+        <LayTarg>0</LayTarg>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 </Project>

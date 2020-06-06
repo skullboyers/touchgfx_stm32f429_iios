@@ -7,6 +7,9 @@ Screen2View::Screen2View()
 
 void Screen2View::setupScreen()
 {
+#ifdef TARGET    
+	Bitmap::cacheAll();
+#endif
     Screen2ViewBase::setupScreen();
     analogHours = analogClock1.getCurrentHour();
     analogMinutes = analogClock1.getCurrentMinute();
@@ -19,6 +22,9 @@ void Screen2View::setupScreen()
 
 void Screen2View::tearDownScreen()
 {
+#ifdef TARGET
+    Bitmap::clearCache();
+#endif
     Screen2ViewBase::tearDownScreen();
 }
 

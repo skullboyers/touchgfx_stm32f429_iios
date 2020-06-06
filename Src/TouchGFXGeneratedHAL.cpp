@@ -21,6 +21,7 @@
 #include <gui/common/FrontendHeap.hpp>
 #include "stm32f4xx.h"
 #include "stm32f4xx_hal_ltdc.h"
+#include "BitmapDatabase.hpp"
 
 namespace {
     static uint16_t lcd_int_active_line;

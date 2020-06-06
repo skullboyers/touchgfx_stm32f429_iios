@@ -126,7 +126,6 @@
             "FileNameBackground": "__designer\\Blue_Clocks_Backgrounds_clock_standard_background.png",
             "RotationCenterX": 116,
             "RotationCenterY": 116,
-            "Style": "Style1",
             "UseAnimation": false,
             "Duration": 0,
             "Easing": "Back",
@@ -233,7 +232,58 @@
         "CanvasBufferSize": 0
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Components": [
+          {
+            "PaddingBefore": 0,
+            "PaddingAfter": 0,
+            "Snapping": false,
+            "IsHorizontal": false,
+            "IsCircular": false,
+            "NumberofItems": 10,
+            "InitialElement": 0,
+            "ItemMargin": 0,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0,
+            "Name": "scrollList1",
+            "X": 403,
+            "Y": 175,
+            "Width": 100,
+            "Height": 50,
+            "Type": "ScrollList",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [],
+            "IsCacheableContainer": false,
+            "Name": "container1",
+            "X": 0,
+            "Y": 0,
+            "Width": 250,
+            "Height": 250,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "CustomContainer1",
+        "X": 0,
+        "Y": 0,
+        "Width": 1024,
+        "Height": 600
+      }
+    ],
     "TextEntries": [
       {
         "TextEntryId": "SingleUseId1",
@@ -254,7 +304,7 @@
       "Height": 600
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "Screen1",
+    "StartupScreenName": "Screen2",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

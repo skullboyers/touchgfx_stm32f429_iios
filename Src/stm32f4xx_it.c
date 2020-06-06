@@ -25,7 +25,7 @@
 #include "task.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "touch_ft5x06.h"
+#include ".\touch\touch_ft5x06.h"
 
 /* USER CODE END Includes */
 

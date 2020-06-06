@@ -15,10 +15,10 @@
   ******************************************************************************
   */
 #include <TouchGFXHAL.hpp>
+#include "stm32f4xx.h"
+#include ".\flash\bsp_spi_flash.h"
 
 /* USER CODE BEGIN TouchGFXHAL.cpp */
-
-#include "stm32f4xx.h"
 
 using namespace touchgfx;
 
@@ -135,6 +135,25 @@ void TouchGFXHAL::enableLCDControllerInterrupt()
 
     TouchGFXGeneratedHAL::enableLCDControllerInterrupt();
 }
+
+/**
+ * 从SPI Flash中加载touchgfx资源
+ */
+bool TouchGFXHAL::blockCopy(void* RESTRICT dest, const void* RESTRICT src, uint32_t numBytes)
+{    
+    uint32_t addrOffset;
+    
+    addrOffset = (uint32_t)src;
+    
+    if (addrOffset >= EXFLASH_BASEADDR && addrOffset <= EXFLASH_ENDADDR) {
+        addrOffset -= EXFLASH_BASEADDR;
+        SpiReadFlash((uint8_t* )dest, addrOffset, numBytes);
+        return true;
+    } else {
+        return HAL::blockCopy(dest, src, numBytes);
+    }
+}
+
 
 /* USER CODE END TouchGFXHAL.cpp */
 

@@ -25,7 +25,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "touch_ft5x06.h"
+#include ".\touch\touch_ft5x06.h"
+#include ".\flash\bsp_spi_flash.h"
 
 /* USER CODE END Includes */
 
@@ -69,13 +70,14 @@ const osThreadAttr_t ledTask_attributes = {
   .stack_size = 256 * 4
 };
 /* USER CODE BEGIN PV */
+const uint8_t exFlashData[] = "The data in external flash.";
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_SPI5_Init(void);
+void MX_SPI5_Init(void);
 static void MX_CRC_Init(void);
 static void MX_DMA2D_Init(void);
 static void MX_LTDC_Init(void);
@@ -120,18 +122,19 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_SPI5_Init();
   MX_CRC_Init();
   MX_DMA2D_Init();
   MX_LTDC_Init();
+
+    SPI_FLASH_Init();
+
   MX_FMC_Init();
+  MX_SDRAM_InitEx();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
     HAL_GPIO_WritePin(LCD_BACKLIGHT_GPIO_Port, LCD_BACKLIGHT_Pin, GPIO_PIN_SET);
-//    HAL_GPIO_WritePin(LCD_RESET_GPIO_Port, LCD_RESET_Pin, GPIO_PIN_RESET);
-//    HAL_Delay(100);
-//    HAL_GPIO_WritePin(LCD_RESET_GPIO_Port, LCD_RESET_Pin, GPIO_PIN_SET);
-    MX_SDRAM_InitEx();
+
+//    MX_SDRAM_InitEx();
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -366,7 +369,7 @@ static void MX_LTDC_Init(void)
   * @param None
   * @retval None
   */
-static void MX_SPI5_Init(void)
+void MX_SPI5_Init(void)
 {
 
   /* USER CODE BEGIN SPI5_Init 0 */
@@ -384,11 +387,11 @@ static void MX_SPI5_Init(void)
   hspi5.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi5.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi5.Init.NSS = SPI_NSS_SOFT;
-  hspi5.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi5.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
   hspi5.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi5.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi5.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi5.Init.CRCPolynomial = 10;
+  hspi5.Init.CRCPolynomial = 7;
   if (HAL_SPI_Init(&hspi5) != HAL_OK)
   {
     Error_Handler();
@@ -481,7 +484,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : W25Q_SPI_CS_Pin */
   GPIO_InitStruct.Pin = W25Q_SPI_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(W25Q_SPI_CS_GPIO_Port, &GPIO_InitStruct);
 

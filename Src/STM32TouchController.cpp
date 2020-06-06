@@ -18,7 +18,7 @@
 /* USER CODE BEGIN STM32TouchController */
 
 #include <STM32TouchController.hpp>
-#include "touch_ft5x06.h"
+#include ".\touch\touch_ft5x06.h"
 
 void STM32TouchController::init()
 {
