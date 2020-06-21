@@ -25,6 +25,7 @@
 #include <stm32f4xx_hal.h>
 //#include "TouchGFXInit.hpp"
 
+
 extern "C" void touchgfx_init();
 extern "C" void touchgfx_taskEntry();
 
@@ -37,15 +38,16 @@ static TouchGFXHAL hal(dma, display, tc, 1024, 600);
 uint16_t* cacheStartAddr = (uint16_t* )0xC0400000;
 uint32_t cacheSize = 0x80000;
 
+
 void touchgfx_init()
 {
 //    HAL &hal = touchgfx_generic_init <STM32F4HAL> (dma, display, tc, 1024, 600, cacheStartAddr, cacheSize);
 #ifndef TARGET
     Bitmap::registerBitmapDatabase(BitmapDatabase::getInstance(), BitmapDatabase::getInstanceSize());
 #else
-	Bitmap::registerBitmapDatabase(BitmapDatabase::getInstance(), BitmapDatabase::getInstanceSize(), cacheStartAddr, cacheSize);
+    Bitmap::registerBitmapDatabase(BitmapDatabase::getInstance(), BitmapDatabase::getInstanceSize(), cacheStartAddr, cacheSize);
 #endif
-    
+
   TypedText::registerTexts(&texts);
   Texts::setLanguage(0);
 

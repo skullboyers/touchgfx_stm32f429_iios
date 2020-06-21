@@ -47,7 +47,7 @@ bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
         g_TouchManger.Event[0] = 0;
         return true;
     }
-    
+
     return false;
 }
 

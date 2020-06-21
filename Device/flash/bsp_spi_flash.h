@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-     
+
 #include <stdint.h>
 #include "stm32f4xx_hal.h"
 //#include "stm32f4xx_hal_gpio.h"
@@ -28,24 +28,24 @@ extern "C" {
 
 /* Private define ------------------------------------------------------------*/
 /*命令定义-开头*******************************/
-#define W25X_WriteEnable		        0x06 
-#define W25X_WriteDisable		        0x04 
-#define W25X_ReadStatusReg		        0x05 
-#define W25X_WriteStatusReg	            0x01 
-#define W25X_ReadData			        0x03 
-#define W25X_FastReadData		        0x0B 
-#define W25X_FastReadDual		        0x3B 
-#define W25X_PageProgram                0x02 
-#define W25X_BlockErase                 0xD8 
-#define W25X_SectorErase                0x20 
-#define W25X_ChipErase                  0xC7 
-#define W25X_PowerDown                  0xB9 
-#define W25X_ReleasePowerDown           0xAB 
-#define W25X_DeviceID			        0xAB 
-#define W25X_ManufactDeviceID   	    0x90 
-#define W25X_JedecDeviceID		        0x9F 
+#define W25X_WriteEnable                0x06
+#define W25X_WriteDisable               0x04
+#define W25X_ReadStatusReg              0x05
+#define W25X_WriteStatusReg	            0x01
+#define W25X_ReadData                   0x03
+#define W25X_FastReadData               0x0B
+#define W25X_FastReadDual               0x3B
+#define W25X_PageProgram                0x02
+#define W25X_BlockErase                 0xD8
+#define W25X_SectorErase                0x20
+#define W25X_ChipErase                  0xC7
+#define W25X_PowerDown                  0xB9
+#define W25X_ReleasePowerDown           0xAB
+#define W25X_DeviceID                   0xAB
+#define W25X_ManufactDeviceID           0x90
+#define W25X_JedecDeviceID              0x9F
 
-#define WIP_Flag                        0x01  /* Write In Progress (WIP) flag */
+#define WIP_Flag                        0x01 /* Write In Progress (WIP) flag */
 #define Dummy_Byte                      0xFF
 /*命令定义-结尾*******************************/
 
@@ -53,16 +53,16 @@ extern "C" {
 /*SPI接口定义-开头****************************/
 #define FLASH_SPI                           SPI5
 
-#define FLASH_SPI_SCK_PIN                   GPIO_PIN_7                  
+#define FLASH_SPI_SCK_PIN                   GPIO_PIN_7
 #define FLASH_SPI_SCK_GPIO_PORT             GPIOF
 
-#define FLASH_SPI_MISO_PIN                  GPIO_PIN_8                
+#define FLASH_SPI_MISO_PIN                  GPIO_PIN_8
 #define FLASH_SPI_MISO_GPIO_PORT            GPIOF
 
-#define FLASH_SPI_MOSI_PIN                  GPIO_PIN_9                
+#define FLASH_SPI_MOSI_PIN                  GPIO_PIN_9
 #define FLASH_SPI_MOSI_GPIO_PORT            GPIOF
 
-#define FLASH_CS_PIN                        GPIO_PIN_6               
+#define FLASH_CS_PIN                        GPIO_PIN_6
 #define FLASH_CS_GPIO_PORT                  GPIOF
 
 #define SPI_FLASH_CS_LOW()      {FLASH_CS_GPIO_PORT->BSRRH=FLASH_CS_PIN;}

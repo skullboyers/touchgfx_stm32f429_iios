@@ -386,30 +386,27 @@ uint8_t i2c_check_device(i2c_hw_s i2c_sw, uint8_t regAddr)
 */
 uint8_t i2c_write_package(i2c_hw_s i2c_sw, uint8_t devAddr, uint8_t regAddr, uint8_t *buf, uint16_t len)
 {
-	i2c_start(i2c_sw);	
-	i2c_send_byte(i2c_sw, devAddr);	/* device address + write command */
-	if(1 == i2c_wait_ack(i2c_sw))
-	{
-		i2c_stop(i2c_sw);
-		return 1;
-	}
-	
-	i2c_send_byte(i2c_sw, regAddr);
-	i2c_wait_ack(i2c_sw);
-	
-	while(len--)
-	{
-		i2c_send_byte(i2c_sw, *buf++);
-		if(1 == i2c_wait_ack(i2c_sw))
-		{
-			i2c_stop(i2c_sw);
-			return 1;
-		}
-	}
-	
-	i2c_stop(i2c_sw);
-	
-	return 0;
+    i2c_start(i2c_sw);
+    i2c_send_byte(i2c_sw, devAddr);	/* device address + write command */
+    if (1 == i2c_wait_ack(i2c_sw)) {
+        i2c_stop(i2c_sw);
+        return 1;
+    }
+
+    i2c_send_byte(i2c_sw, regAddr);
+    i2c_wait_ack(i2c_sw);
+
+    while (len--) {
+        i2c_send_byte(i2c_sw, *buf++);
+        if (1 == i2c_wait_ack(i2c_sw)) {
+            i2c_stop(i2c_sw);
+            return 1;
+        }
+    }
+
+    i2c_stop(i2c_sw);
+
+    return 0;
 }
 
 /**
@@ -427,37 +424,32 @@ uint8_t i2c_write_package(i2c_hw_s i2c_sw, uint8_t devAddr, uint8_t regAddr, uin
 */
 uint8_t i2c_read_package(i2c_hw_s i2c_sw, uint8_t devAddr, uint8_t regAddr, uint8_t *buf, uint16_t len)
 {
-	i2c_start(i2c_sw);
-	
-	i2c_send_byte(i2c_sw, devAddr);//(devAddr<<1) & ~(1<<0));	/* device address + write command */
-	if(1 == i2c_wait_ack(i2c_sw))
-	{
-		i2c_stop(i2c_sw);
-		return 1;
-	}
-	
-	i2c_send_byte(i2c_sw, regAddr);
-	i2c_wait_ack(i2c_sw);
-	
-	i2c_start(i2c_sw);
-	i2c_send_byte(i2c_sw, devAddr + 1);//(devAddr<<1) | 1<<0);
-	i2c_wait_ack(i2c_sw);
-	
-	while(len--)
-	{
-		if(0 == len)
-		{
-			*buf = i2c_read_byte(i2c_sw, nACK);
-		}
-		else
-		{
-			*buf++ = i2c_read_byte(i2c_sw, ACK);
-		}
-	}
-	
-	i2c_stop(i2c_sw);
-	
-	return 0;
+    i2c_start(i2c_sw);
+
+    i2c_send_byte(i2c_sw, devAddr); // (devAddr<<1) & ~(1<<0)); /* device address + write command */
+    if (1 == i2c_wait_ack(i2c_sw)) {
+        i2c_stop(i2c_sw);
+        return 1;
+    }
+
+    i2c_send_byte(i2c_sw, regAddr);
+    i2c_wait_ack(i2c_sw);
+
+    i2c_start(i2c_sw);
+    i2c_send_byte(i2c_sw, devAddr + 1); // (devAddr<<1) | 1<<0);
+    i2c_wait_ack(i2c_sw);
+
+    while (len--) {
+        if (0 == len) {
+            *buf = i2c_read_byte(i2c_sw, nACK);
+        } else {
+            *buf++ = i2c_read_byte(i2c_sw, ACK);
+        }
+    }
+
+    i2c_stop(i2c_sw);
+
+    return 0;
 }
 
 

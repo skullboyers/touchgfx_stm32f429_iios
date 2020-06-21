@@ -46,15 +46,15 @@ static void Ft5x06_GpioInit(void)
     GPIO_InitStruct.Pull = GPIO_PULLDOWN;
     HAL_GPIO_Init(TP_INT_PORT, &GPIO_InitStruct);
     HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
-    
+
     i2c_init(i2c_tp);
-    g_TouchManger.Enable = 1;    
-    
+    g_TouchManger.Enable = 1;
+
     HAL_GPIO_WritePin(TP_RST_PORT, TP_RST_PIN, GPIO_PIN_RESET);
     HAL_Delay(20);    
     HAL_GPIO_WritePin(TP_RST_PORT, TP_RST_PIN, GPIO_PIN_SET);
     HAL_Delay(50);
-    
+
     HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 }
 
@@ -78,103 +78,88 @@ static uint8_t Ft5x06_WriteReg(uint16_t addr, uint8_t *buf, uint8_t len)
 
 
 void Ft5x06_TouchProcess(void)
-{  
+{
     uint8_t buf[CFG_POINT_READ_BUF];
-	uint8_t i;
-	uint16_t x, y;
+    uint8_t i;
+    uint16_t x, y;
 
-	if (g_TouchManger.Enable == 0) {
-		return;
-	}
-	
-	if (Ft5x06_IsTouch() == 0) {
-		return;
-	}
-	/* TODO: */
-//	Ft5x06_ReadReg(2, buf, 1); // TD_STATUS
-//    /* 判断是否有触摸数据 */	
-//	if ((buf[0] & 0x07) == 0) {		
-//		return;
-//	}
-	
-	/* 有触摸，读取完整的数据，这里读取了一次 */
-	Ft5x06_ReadReg(TS_DEVICE_MODE, buf, CFG_POINT_READ_BUF);
-	for (i = 0; i < FT5X06_TOUCH_POINTS; i++) {
-		uint8_t pointid;
-		
-		pointid = (buf[5 + 6*i]) >> 4;
-		if (pointid >= 0x0f) {
-			break;
-		} else {
-        	g_TouchManger.X[i] = (int16_t)(buf[3 + 6*i] & 0x0F)<<8 | (int16_t)buf[4 + 6*i];
-        	g_TouchManger.Y[i] = (int16_t)(buf[5 + 6*i] & 0x0F)<<8 | (int16_t)buf[6 + 6*i];
-        	g_TouchManger.Event[i] = buf[0x3 + 6*i] >> 6;
-        	g_TouchManger.id[i] = (buf[5 + 6*i])>>4;
-    	}
+    if (g_TouchManger.Enable == 0) {
+        return;
     }
 
-	/* 检测按下 */
-	if ((g_TouchManger.ChipID == 0x55)||(g_TouchManger.ChipID == 0xa3))       /* 4.3寸 480 * 272 */
-	{
-		x = g_TouchManger.Y[0];
-		y = g_TouchManger.X[0];	
-		
-		/* 判断值域 */
-		if (x > 479)
-		{
-			x = 479;
-		}
-		
-		if (y > 271)
-		{
-			y = 271;
-		}			
-	}
-	else if (g_TouchManger.ChipID == 0x0A)	/* 5.0寸 800 * 480 */
-	{
-		x = g_TouchManger.X[0];
-		y = g_TouchManger.Y[0];	
-		
-		/* 判断值域 */
-		if (x > 799)
-		{
-			x = 799;
-		}			
-		if (y > 479)
-		{
-			y = 479;
-		}			
-	}
-    else if (g_TouchManger.ChipID == 0x54)	/* 7.0寸 1024 * 600 */
-	{
-		x = g_TouchManger.X[0];
-		y = g_TouchManger.Y[0];	
-		
-		/* 判断值域 */
-		if (x > 1023)
-		{
-			x = 1023;
-		}			
-		if (y > 599)
-		{
-			y = 599;
-		}			
-	}
-	else	/* id == 0x06 表示7寸电容屏（FT芯片） */
-	{
-		x = g_TouchManger.Y[0];
-		y = g_TouchManger.X[0];	
-		
-		/* 判断值域 */
-		if (x > 799)
-		{
-			x = 799;
-		}			
-		if (y > 479)
-		{
-			y = 479;
-		}			
-	}	
+    if (Ft5x06_IsTouch() == 0) {
+        return;
+    }
+    /* TODO: */
+//    Ft5x06_ReadReg(2, buf, 1); // TD_STATUS
+//    /* 判断是否有触摸数据 */
+//    if ((buf[0] & 0x07) == 0) {
+//        return;
+//    }
+
+    /* 有触摸，读取完整的数据，这里读取了一次 */
+    Ft5x06_ReadReg(TS_DEVICE_MODE, buf, CFG_POINT_READ_BUF);
+    for (i = 0; i < FT5X06_TOUCH_POINTS; i++) {
+        uint8_t pointid;
+
+        pointid = (buf[5 + 6*i]) >> 4;
+        if (pointid >= 0x0f) {
+            break;
+        } else {
+            g_TouchManger.X[i] = (int16_t)(buf[3 + 6*i] & 0x0F)<<8 | (int16_t)buf[4 + 6*i];
+            g_TouchManger.Y[i] = (int16_t)(buf[5 + 6*i] & 0x0F)<<8 | (int16_t)buf[6 + 6*i];
+            g_TouchManger.Event[i] = buf[0x3 + 6*i] >> 6;
+            g_TouchManger.id[i] = (buf[5 + 6*i])>>4;
+        }
+    }
+
+    /* 检测按下 */
+    /* 4.3寸 480 * 272 */
+    if ((g_TouchManger.ChipID == 0x55)||(g_TouchManger.ChipID == 0xa3)) {
+        x = g_TouchManger.Y[0];
+        y = g_TouchManger.X[0];	
+
+        /* 判断值域 */
+        if (x > 479) {
+            x = 479;
+        }
+        if (y > 271) {
+            y = 271;
+        }
+    } else if (g_TouchManger.ChipID == 0x0A) { /* 5.0寸 800 * 480 */
+        x = g_TouchManger.X[0];
+        y = g_TouchManger.Y[0];
+
+        /* 判断值域 */
+        if (x > 799) {
+            x = 799;
+        }
+        if (y > 479) {
+            y = 479;
+        }
+    }  else if (g_TouchManger.ChipID == 0x54) { /* 7.0寸 1024 * 600 */
+        x = g_TouchManger.X[0];
+        y = g_TouchManger.Y[0];
+
+        /* 判断值域 */
+        if (x > 1023) {
+            x = 1023;
+        }
+        if (y > 599) {
+            y = 599;
+        }
+    } else { /* id == 0x06 表示7寸电容屏（FT芯片） */
+        x = g_TouchManger.Y[0];
+        y = g_TouchManger.X[0];	
+
+        /* 判断值域 */
+        if (x > 799) {
+            x = 799;
+        }
+        if (y > 479) {
+            y = 479;
+        }
+    }
 }
 
 uint8_t FT5X06_ReadID(void)
@@ -194,7 +179,6 @@ uint8_t FT5X06_ReadID(void)
 uint8_t touchBuf[2];
 static void Ft5x06_ConfigParam(void)
 {
-    
     touchBuf[0] = 0;
     Ft5x06_WriteReg(0x00, touchBuf, 1);
     Ft5x06_WriteReg(0xA4, touchBuf, 1);
@@ -212,7 +196,7 @@ void TouchPanelInit(void)
 }
 
 void GetTouchInfo(void)
-{    
+{
     uint8_t count = 0;
     while (count < 5) {
         if (i2c_check_device(i2c_tp, FT5X06_I2C_ADDR) == 0) {
