@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_projx.xsd">
-
   <SchemaVersion>2.1</SchemaVersion>
-
   <Header>### uVision Project, (C) Keil Software</Header>
-
   <Targets>
     <Target>
       <TargetName>stm32f429_touchgfx_iios</TargetName>
@@ -1007,6 +1004,11 @@
               <FilePath>../src/gui/src/common/frontendapplication.cpp</FilePath>
             </File>
             <File>
+              <FileName>Model.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../src/gui/src/model/model.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Screen1Presenter.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../src/gui/src/screen1_screen/screen1presenter.cpp</FilePath>
@@ -1025,11 +1027,6 @@
               <FileName>Screen2View.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../src/gui/src/screen2_screen/screen2view.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Model.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Src\gui\src\model\Model.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1184,20 +1181,18 @@
       </Groups>
     </Target>
   </Targets>
-
   <RTE>
-    <apis/>
+    <apis></apis>
     <components>
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="4.3.0" condition="CMSIS Core">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="4.5.0"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="4.5.0"></package>
         <targetInfos>
-          <targetInfo name="stm32f429_touchgfx_iios"/>
+          <targetInfo name="stm32f429_touchgfx_iios"></targetInfo>
         </targetInfos>
       </component>
     </components>
-    <files/>
+    <files></files>
   </RTE>
-
   <LayerInfo>
     <Layers>
       <Layer>
@@ -1212,5 +1207,4 @@
       </Layer>
     </Layers>
   </LayerInfo>
-
 </Project>

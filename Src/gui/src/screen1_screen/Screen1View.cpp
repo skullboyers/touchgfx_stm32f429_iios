@@ -5,7 +5,9 @@
 #include "texts/TextKeysAndLanguages.hpp"
 #include "fonts/ApplicationFontProvider.hpp"
 #include "texts/TypedTextDatabase.hpp"
+#ifdef TARGET
 #include ".\flash\bsp_spi_flash.h"
+#endif
 
 
 #ifdef USE_FONT_CACHE

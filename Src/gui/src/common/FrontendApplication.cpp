@@ -1,5 +1,7 @@
 #include <gui/common/FrontendApplication.hpp>
+#ifdef TARGET
 #include ".\flash\bsp_spi_flash.h"
+#endif
 
 
 //#define USE_BINARY_FONT
